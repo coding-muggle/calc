@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="scale-control">
+        <span>Calculator Size:</span>
+        <input type="range" id="scaleSlider" min="50" max="150" value="100">
+        <span id="scaleValue">100%</span>
+    </div>
+    
     <div class="calculator">
         <div class="display">
             <input type="text" id="result" readonly>
@@ -59,6 +65,16 @@
                 document.getElementById('result').value = 'Error';
             }
         }
+        // Scale control functionality
+const scaleSlider = document.getElementById('scaleSlider');
+const scaleValue = document.getElementById('scaleValue');
+const calculator = document.querySelector('.calculator');
+
+scaleSlider.addEventListener('input', function() {
+    const scale = this.value / 100;
+    calculator.style.transform = `scale(${scale})`;
+    scaleValue.textContent = `${this.value}%`;
+});
     </script>
 </body>
 </html>
