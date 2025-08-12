@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,74 +6,42 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="scale-control">
-        <span>Calculator Size:</span>
-        <input type="range" id="scaleSlider" min="50" max="150" value="100">
-        <span id="scaleValue">100%</span>
-    </div>
-    
     <div class="calculator">
         <div class="display">
             <input type="text" id="result" readonly>
         </div>
         <div class="buttons">
-            <button onclick="clearDisplay()">C</button>
-            <button onclick="appendToDisplay('/')">÷</button>
-            <button onclick="appendToDisplay('*')">x</button>
-            <button onclick="backspace()">⌫</button>
-            
-            <button onclick="appendToDisplay('7')">7</button>
-            <button onclick="appendToDisplay('8')">8</button>
-            <button onclick="appendToDisplay('9')">9</button>
-            <button onclick="appendToDisplay('-')">-</button>
-            
-            <button onclick="appendToDisplay('4')">4</button>
-            <button onclick="appendToDisplay('5')">5</button>
-            <button onclick="appendToDisplay('6')">6</button>
-            <button onclick="appendToDisplay('+')">+</button>
-            
-            <button onclick="appendToDisplay('1')">1</button>
-            <button onclick="appendToDisplay('2')">2</button>
-            <button onclick="appendToDisplay('3')">3</button>
-            <button onclick="calculate()" class="equals">=</button>
-            
-            <button onclick="appendToDisplay('0')" class="zero">0</button>
-            <button onclick="appendToDisplay('.')">.</button>
+            <div class="button-row">
+                <button class="clear-btn" onclick="clearDisplay()">C</button>
+                <button class="backspace-btn" onclick="backspace()">⌫</button>
+                <button class="operator-btn" onclick="setOperation('/')">÷</button>
+            </div>
+            <div class="button-row">
+                <button class="number-btn" onclick="appendNumber('7')">7</button>
+                <button class="number-btn" onclick="appendNumber('8')">8</button>
+                <button class="number-btn" onclick="appendNumber('9')">9</button>
+                <button class="operator-btn" onclick="setOperation('*')">×</button>
+            </div>
+            <div class="button-row">
+                <button class="number-btn" onclick="appendNumber('4')">4</button>
+                <button class="number-btn" onclick="appendNumber('5')">5</button>
+                <button class="number-btn" onclick="appendNumber('6')">6</button>
+                <button class="operator-btn" onclick="setOperation('-')">-</button>
+            </div>
+            <div class="button-row">
+                <button class="number-btn" onclick="appendNumber('1')">1</button>
+                <button class="number-btn" onclick="appendNumber('2')">2</button>
+                <button class="number-btn" onclick="appendNumber('3')">3</button>
+                <button class="operator-btn" onclick="setOperation('+')">+</button>
+            </div>
+            <div class="button-row">
+                <button class="number-btn zero-btn" onclick="appendNumber('0')">0</button>
+                <button class="number-btn" onclick="appendDecimal()">.</button>
+                <button class="equals-btn" onclick="calculate()">=</button>
+            </div>
         </div>
     </div>
-
-    <script>
-        function appendToDisplay(value) {
-            document.getElementById('result').value += value;
-        }
-        
-        function clearDisplay() {
-            document.getElementById('result').value = '';
-        }
-        
-        function backspace() {
-            let current = document.getElementById('result').value;
-            document.getElementById('result').value = current.slice(0, -1);
-        }
-        
-        function calculate() {
-            try {
-                let result = eval(document.getElementById('result').value);
-                document.getElementById('result').value = result;
-            } catch (error) {
-                document.getElementById('result').value = 'Error';
-            }
-        }
-        // Scale control functionality
-const scaleSlider = document.getElementById('scaleSlider');
-const scaleValue = document.getElementById('scaleValue');
-const calculator = document.querySelector('.calculator');
-
-scaleSlider.addEventListener('input', function() {
-    const scale = this.value / 100;
-    calculator.style.transform = `scale(${scale})`;
-    scaleValue.textContent = `${this.value}%`;
-});
-    </script>
+    <div class="copyright">© 2025 Calc Project Coding-Muggle</div>
+    <script src="script.js"></script>
 </body>
 </html>
