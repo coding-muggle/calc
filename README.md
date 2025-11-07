@@ -88,10 +88,6 @@ Browser Compatibility
 
 Created by **coding-muggle** as part of [The Odin Project](https://www.theodinproject.com) Foundation Course.
 
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
-
 ---
 
 *Part of The Odin Project - [Calculator Assignment](https://www.theodinproject.com/lessons/foundations-calculator)*
